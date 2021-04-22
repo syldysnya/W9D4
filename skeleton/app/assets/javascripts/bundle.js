@@ -14,6 +14,7 @@ class FollowToggle {
         this.userId = $el.attr("data-user-id");
         this.followState = $el.attr("data-initial-follow-state");
         this.render();
+        // this.handleClick();
     }
 
     render() {
@@ -23,8 +24,9 @@ class FollowToggle {
             this.$el.html("Unfollow!");
         }
     }
-
+    
     handleClick() {
+        debugger
         if (this.followState === "unfollowed") {
             return $.ajax({
                 method: "POST",
@@ -88,14 +90,25 @@ var __webpack_exports__ = {};
   \*****************************/
 const FollowToggle = __webpack_require__(/*! ./follow_toggle.js */ "./frontend/follow_toggle.js");
 
-$(function() {
-  $("button.follow-toggle").each(function (idx, $el) {new FollowToggle($el);}), 
-  $("button.follow-toggle").on("submit", e => {
+// $(function() {
+//   // $(),
+// })
+
+const setEventHandlers = () => {
+  $("button.follow-toggle").each(function (idx, $el) {new FollowToggle($el);}),
+
+  $("button.follow-toggle").on("click", (e) => {
     e.preventDefault();
-    handleClick();
+    debugger
+    let toggle = FollowToggle.find(e.currentTarget)
+    toggle.handleClick();
   })
-  // $(),
-})
+
+}
+
+$(() => {
+  setEventHandlers();
+});
 })();
 
 /******/ })()

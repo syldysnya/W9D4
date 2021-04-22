@@ -5,6 +5,7 @@ class FollowToggle {
         this.userId = $el.attr("data-user-id");
         this.followState = $el.attr("data-initial-follow-state");
         this.render();
+        // this.handleClick();
     }
 
     render() {
@@ -14,8 +15,9 @@ class FollowToggle {
             this.$el.html("Unfollow!");
         }
     }
-
+    
     handleClick() {
+        debugger
         if (this.followState === "unfollowed") {
             return $.ajax({
                 method: "POST",

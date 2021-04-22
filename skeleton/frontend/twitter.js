@@ -1,10 +1,21 @@
 const FollowToggle = require('./follow_toggle.js');
 
-$(function() {
-  $("button.follow-toggle").each(function (idx, $el) {new FollowToggle($el);}), 
-  $("button.follow-toggle").on("submit", e => {
+// $(function() {
+//   // $(),
+// })
+
+const setEventHandlers = () => {
+  $("button.follow-toggle").each(function (idx, $el) {new FollowToggle($el);}),
+
+  $("button.follow-toggle").on("click", (e) => {
     e.preventDefault();
-    handleClick();
+    debugger
+    let toggle = FollowToggle.find(e.currentTarget)
+    toggle.handleClick();
   })
-  // $(),
-})
+
+}
+
+$(() => {
+  setEventHandlers();
+});
